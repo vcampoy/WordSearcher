@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordSearcher.Console", "WordSearcher.Console\WordSearcher.Console.csproj", "{149E55B5-385B-4C95-B202-A550D392FD5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordSearcher.Infrastructure", "WordSearcher.Infrastructure\WordSearcher.Infrastructure.csproj", "{308F9393-F08A-4715-9929-141A5AA06C3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{149E55B5-385B-4C95-B202-A550D392FD5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{149E55B5-385B-4C95-B202-A550D392FD5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{149E55B5-385B-4C95-B202-A550D392FD5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{308F9393-F08A-4715-9929-141A5AA06C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308F9393-F08A-4715-9929-141A5AA06C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308F9393-F08A-4715-9929-141A5AA06C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308F9393-F08A-4715-9929-141A5AA06C3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
