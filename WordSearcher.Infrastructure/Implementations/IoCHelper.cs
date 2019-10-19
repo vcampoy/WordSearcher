@@ -1,6 +1,6 @@
 ﻿using Unity;
 
-namespace WordSearcher.Infrastructure.Implementation
+namespace WordSearcher.Infrastructure.Implementations
 {
     public static class IoCHelper
     {

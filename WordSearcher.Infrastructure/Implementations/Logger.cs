@@ -1,10 +1,10 @@
 ﻿using log4net;
+using WordSearcher.Infrastructure.Contracts;
 
-namespace WordSearcher.Infrastructure.Implementation
+namespace WordSearcher.Infrastructure.Implementations
 {
     public class Logger : ILogger
     {
-        //public static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly ILog _log = LogManager.GetLogger(typeof(Logger));
 
         public void Info(string text)
@@ -16,11 +16,5 @@ namespace WordSearcher.Infrastructure.Implementation
         {
             _log.Error(text);
         }
-    }
-
-    public interface ILogger
-    {
-        void Info(string text);
-        void Error(string text);
     }
 }
