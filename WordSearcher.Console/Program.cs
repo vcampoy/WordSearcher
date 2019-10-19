@@ -76,6 +76,7 @@ namespace WordSearcher.Console
         private static void RegisterInfrastructureDependencies(IUnityContainer container)
         {
             container.RegisterType<ILogger, Logger>();
+            container.RegisterType<IConfigurationProvider, ConfigurationProvider>();
         }
 
         #endregion

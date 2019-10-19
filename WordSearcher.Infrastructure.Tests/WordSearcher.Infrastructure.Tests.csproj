@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BED03F63-35C3-424C-A6EC-09149CD175E5}</ProjectGuid>
+    <ProjectGuid>{C24193C4-22D2-4B76-A5E0-4B93AD0A33F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WordSearcher.Application.Tests</RootNamespace>
-    <AssemblyName>WordSearcher.Application.Tests</AssemblyName>
+    <RootNamespace>WordSearcher.Infrastructure.Tests</RootNamespace>
+    <AssemblyName>WordSearcher.Infrastructure.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FakeItEasy, Version=5.0.0.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">
-      <HintPath>..\packages\FakeItEasy.5.3.0\lib\net45\FakeItEasy.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.0.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -53,23 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileProcessorTests.cs" />
-    <Compile Include="UserExperienceManagerTests.cs" />
+    <Compile Include="ConfigurationProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WordSearcher.Infrastructure\WordSearcher.Infrastructure.csproj">
+      <Project>{308f9393-f08a-4715-9929-141a5aa06c3f}</Project>
+      <Name>WordSearcher.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WordSearcher.Application\WordSearcher.Application.csproj">
-      <Project>{0adcccba-71d7-4e94-a92e-d481bacc553c}</Project>
-      <Name>WordSearcher.Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WordSearcher.Infrastructure\WordSearcher.Infrastructure.csproj">
-      <Project>{308F9393-F08A-4715-9929-141A5AA06C3F}</Project>
-      <Name>WordSearcher.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

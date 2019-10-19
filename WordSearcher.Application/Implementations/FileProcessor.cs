@@ -4,11 +4,19 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using WordSearcher.Application.Contracts;
+using WordSearcher.Infrastructure.Contracts;
 
 namespace WordSearcher.Application.Implementations
 {
     public class FileProcessor : IFileProcessor
     {
+        private readonly IConfigurationProvider _configurationProvider;
+
+        public FileProcessor(IConfigurationProvider configurationProvider)
+        {
+            _configurationProvider = configurationProvider;
+        }
+
         public Dictionary<string, int> CountWordsOfFile(string filePath)
         {
             if (string.IsNullOrEmpty(filePath))
@@ -62,7 +70,7 @@ namespace WordSearcher.Application.Implementations
 
         public List<char> GetPunctuationMarks()
         {
-            var punctuationMarks = ConfigurationManager.AppSettings["punctuationMarks"];
+            var punctuationMarks = _configurationProvider.GetValueFromAppSettings("punctuationMarks");
             if (string.IsNullOrEmpty(punctuationMarks))
             {
                 throw new ArgumentException($"PunctuationMarks is a required field, please, fill it at AppSettings.");
