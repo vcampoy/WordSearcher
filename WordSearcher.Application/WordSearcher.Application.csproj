@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IFileProcessor.cs" />
     <Compile Include="Contracts\IUserExperienceManager.cs" />
+    <Compile Include="Implementations\FileProcessor.cs" />
     <Compile Include="Implementations\UserExperienceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

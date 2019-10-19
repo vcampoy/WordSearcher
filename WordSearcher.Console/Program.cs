@@ -70,6 +70,7 @@ namespace WordSearcher.Console
         private static void RegisterApplicationDependencies(IUnityContainer container)
         {
             container.RegisterType<IUserExperienceManager, UserExperienceManager>();
+            container.RegisterType<IFileProcessor, FileProcessor>();
         }
 
         private static void RegisterInfrastructureDependencies(IUnityContainer container)
