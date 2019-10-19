@@ -26,16 +26,16 @@ namespace WordSearcher.Application.Implementations
 
         public void DisplayResults(List<SearchResult> processedFiles)
         {
-            if (processedFiles.Any(f => f.NumberOfTimesFound > 0))
+            if (processedFiles == null || !processedFiles.Any(f => f.NumberOfTimesFound > 0))
+            {
+                _logger.Info("No results found");
+            }
+            else
             {
                 foreach (var file in processedFiles)
                 {
                     _logger.Info($"{file.FileName}: {file.NumberOfTimesFound}");
                 }
-            }
-            else
-            {
-                _logger.Info("No results found");
             }
         }
     }

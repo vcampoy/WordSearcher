@@ -70,6 +70,10 @@
       <Project>{308F9393-F08A-4715-9929-141A5AA06C3F}</Project>
       <Name>WordSearcher.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WordSearcher.Models\WordSearcher.Models.csproj">
+      <Project>{e7211b44-92b8-4430-91ac-50b2ee44a11a}</Project>
+      <Name>WordSearcher.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
