@@ -21,18 +21,17 @@ namespace WordSearcher.Console
                 logger.Info("Started WordSearcher");
 
                 var folder = args[0];
-                
                 logger.Info($"Start to process files of folder='{folder}'");
 
-                //TODO: Add processing files method here
+                var fileManager = IoCHelper.GetContainer().Resolve<IFileManager>();
+                var processedFiles = fileManager.ProcessAllFilesFromFolder(folder);
 
-                var processedFiles = 0;
-                logger.Info($"Finish to process {processedFiles} files of folder='{folder}'");
+                logger.Info($"Finish to process {processedFiles.Count} files of folder='{folder}'");
 
                 var word = string.Empty;
 
                 var userExpecienceManager = IoCHelper.GetContainer().Resolve<IUserExperienceManager>();
-
+                
                 do 
                 {
                     System.Console.WriteLine("Please, enter a word to search (write ':quit' to finish)");
@@ -41,7 +40,8 @@ namespace WordSearcher.Console
                     
                     if (!userExpecienceManager.IsFinishWord(word))
                     {
-                        //TODO: Add Word search algorithm here
+                        var results = fileManager.GetSortedResultsOfSearchingForAWord(processedFiles, word);
+                        userExpecienceManager.DisplayResults(results);
                     }
 
                 } while (!userExpecienceManager.IsFinishWord(word));
@@ -71,6 +71,7 @@ namespace WordSearcher.Console
         {
             container.RegisterType<IUserExperienceManager, UserExperienceManager>();
             container.RegisterType<IFileProcessor, FileProcessor>();
+            container.RegisterType<IFileManager, FileManager>();
         }
 
         private static void RegisterInfrastructureDependencies(IUnityContainer container)

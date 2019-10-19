@@ -81,6 +81,10 @@
       <Project>{308f9393-f08a-4715-9929-141a5aa06c3f}</Project>
       <Name>WordSearcher.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WordSearcher.Models\WordSearcher.Models.csproj">
+      <Project>{e7211b44-92b8-4430-91ac-50b2ee44a11a}</Project>
+      <Name>WordSearcher.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

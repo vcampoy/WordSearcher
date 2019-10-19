@@ -12,6 +12,11 @@ namespace WordSearcher.Infrastructure.Implementations
             _log.Info(text);
         }
 
+        public void Warn(string text)
+        {
+            _log.Warn(text);
+        }
+
         public void Error(string text)
         {
             _log.Error(text);
