@@ -1,6 +1,7 @@
 ﻿using System;
 using Unity;
 using WordSearcher.Application.Contracts;
+using WordSearcher.Application.Implementations;
 using WordSearcher.Infrastructure.Contracts;
 using WordSearcher.Infrastructure.Implementations;
 
@@ -55,12 +56,27 @@ namespace WordSearcher.Console
                 System.Console.ReadLine();
             }
         }
-        
+
+        #region Dependencies registration
+
         private static void RegisterDependencies()
         {
             var container = IoCHelper.GetContainer();
 
+            RegisterApplicationDependencies(container);
+            RegisterInfrastructureDependencies(container);
+        }
+
+        private static void RegisterApplicationDependencies(IUnityContainer container)
+        {
+            container.RegisterType<IUserExperienceManager, UserExperienceManager>();
+        }
+
+        private static void RegisterInfrastructureDependencies(IUnityContainer container)
+        {
             container.RegisterType<ILogger, Logger>();
         }
+
+        #endregion
     }
 }
