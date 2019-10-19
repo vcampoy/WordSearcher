@@ -37,7 +37,6 @@ namespace WordSearcher.Application.Implementations
             {
                 _logger.Info("No results found");
             }
-            
         }
     }
 }
