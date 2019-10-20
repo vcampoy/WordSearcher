@@ -23,6 +23,11 @@ namespace WordSearcher.Application.Implementations
 
         public FileProcessed GenerateFileProcessed(string filePath)
         {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                throw new ArgumentException("FilePath is a required field, please, fill it.");
+            }
+
             _logger.Info($"Starting to generate a fileProcessed of '{filePath}'");
 
             var fileProcessed = new FileProcessed
@@ -56,6 +61,11 @@ namespace WordSearcher.Application.Implementations
 
         public List<FileProcessed> ProcessAllFilesFromFolder(string folder)
         {
+            if (string.IsNullOrEmpty(folder))
+            {
+                throw new ArgumentException("Folder is a required field, please, fill it.");
+            }
+
             _logger.Info($"Starting to process all files of folder '{folder}'");
 
             var filesToProcess = GetFilePathsToProcess(folder);
@@ -74,6 +84,16 @@ namespace WordSearcher.Application.Implementations
         public List<SearchResult> SearchWord(List<FileProcessed> files, string word)
         {
             var results = new List<SearchResult>();
+
+            if (files == null || !files.Any())
+            {
+                return results;
+            }
+
+            if (string.IsNullOrEmpty(word))
+            {
+                throw new ArgumentException("It is required to introduce a word to search.");
+            }
 
             var lowerCaseWord = _fileProcessor.GetLowerCaseWord(word);
 
@@ -94,6 +114,11 @@ namespace WordSearcher.Application.Implementations
 
         public List<SearchResult> GetSortedResultsOfSearchingForAWord(List<FileProcessed> files, string word)
         {
+            if (files == null || !files.Any())
+            {
+                return new List<SearchResult>();
+            }
+
             var results = SearchWord(files, word);
             var numberOfResultsToShow = _configurationProvider.GetIntValueFromAppSettings("numberOfResultsToShow");
 

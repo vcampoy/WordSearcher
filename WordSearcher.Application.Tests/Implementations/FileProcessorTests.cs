@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FakeItEasy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WordSearcher.Application.Contracts;
 using WordSearcher.Application.Implementations;
 using WordSearcher.Infrastructure.Contracts;
 
-namespace WordSearcher.Application.Tests
+namespace WordSearcher.Application.Tests.Implementations
 {
     [TestClass]
     public class FileProcessorTests

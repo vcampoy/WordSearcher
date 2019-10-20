@@ -6,7 +6,7 @@ using WordSearcher.Application.Implementations;
 using WordSearcher.Infrastructure.Contracts;
 using WordSearcher.Models;
 
-namespace WordSearcher.Application.Tests
+namespace WordSearcher.Application.Tests.Implementations
 {
     [TestClass]
     public class UserExperienceManagerTests
