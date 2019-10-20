@@ -11,5 +11,7 @@ namespace WordSearcher.Application.Contracts
         string CleanTextFromPunctuationMarks(string text);
 
         List<char> GetPunctuationMarks();
+
+        string GetLowerCaseWord(string word);
     }
 }

@@ -75,13 +75,15 @@ namespace WordSearcher.Application.Implementations
         {
             var results = new List<SearchResult>();
 
+            var lowerCaseWord = _fileProcessor.GetLowerCaseWord(word);
+
             foreach (var file in files)
             {
                 var result = new SearchResult {FileName = file.FileName, NumberOfTimesFound = 0};
                 
-                if (file.Dictionary.ContainsKey(word))
+                if (file.Dictionary.ContainsKey(lowerCaseWord))
                 {
-                    result.NumberOfTimesFound = file.Dictionary[word];
+                    result.NumberOfTimesFound = file.Dictionary[lowerCaseWord];
                 }
 
                 results.Add(result);

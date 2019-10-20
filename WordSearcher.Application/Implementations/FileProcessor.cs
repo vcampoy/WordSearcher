@@ -31,24 +31,41 @@ namespace WordSearcher.Application.Implementations
 
             return dictionary;
         }
+        
+        public string GetLowerCaseWord(string word)
+        {
+            return string.IsNullOrEmpty(word) ? word : word.ToLower();
+        }
 
         public Dictionary<string, int> GenerateDictionary(string text)
         {
-            var words = text.Split(' ');
-
             var dictionary = new Dictionary<string, int>();
+
+            if (string.IsNullOrEmpty(text))
+            {
+                return dictionary;
+            }
+
+            var words = text.Split(' ');
             
             //Tip: I prefer to use a for-loop in places where the performance is required.
-            //In this case, it is probably that we are going to process a lot of words, so for is better than a foreach
+            //In this case, it is probably that we are going to process a lot of words, so for-loop is better than a foreach-loop
             for (int i = 0; i < words.Length; i++)
             {
-                if (dictionary.ContainsKey(words[i]))
+                var lowerCaseWord = GetLowerCaseWord(words[i]);
+
+                if (lowerCaseWord == "")
                 {
-                    dictionary[words[i]]++;
+                    continue;
+                }
+
+                if (dictionary.ContainsKey(lowerCaseWord))
+                {
+                    dictionary[lowerCaseWord]++;
                 }
                 else
                 {
-                    dictionary.Add(words[i], 1);
+                    dictionary.Add(lowerCaseWord, 1);
                 }
             }
 
