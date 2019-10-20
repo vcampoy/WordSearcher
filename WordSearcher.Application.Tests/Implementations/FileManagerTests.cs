@@ -251,5 +251,65 @@ namespace WordSearcher.Application.Tests.Implementations
         }
 
         #endregion
+
+        #region GetSortedResultsOfSearchingForAWord
+
+        [TestMethod]
+        public void Given_GetSortedResultsOfSearchingForAWord_getsNullFiles_returnsEmptyList()
+        {
+            var result = _fileManager.GetSortedResultsOfSearchingForAWord(null, "word");
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.Any());
+        }
+
+        [TestMethod]
+        public void Given_GetSortedResultsOfSearchingForAWord_getsEmptyFiles_returnsEmptyList()
+        {
+            var result = _fileManager.GetSortedResultsOfSearchingForAWord(new List<FileProcessed>(), "word");
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.Any());
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "It is required to introduce a word to search.")]
+        public void Given_GetSortedResultsOfSearchingForAWord_getsNullWord_throwsException()
+        {
+            _fileManager.GetSortedResultsOfSearchingForAWord(_filesProcessed, null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "It is required to introduce a word to search.")]
+        public void Given_GetSortedResultsOfSearchingForAWord_getsEmptyWord_throwsException()
+        {
+            _fileManager.GetSortedResultsOfSearchingForAWord(_filesProcessed, string.Empty);
+        }
+
+        [TestMethod]
+        public void Given_GetSortedResultsOfSearchingForAWord_getsFilesWithWordOnlyInOne_returnsSortedList()
+        {
+            var word = "gol";
+            A.CallTo(() => _fakeConfigurationProvider.GetIntValueFromAppSettings("numberOfResultsToShow")).Returns(10);
+            A.CallTo(() => _fakeFileProcessor.GetLowerCaseWord(word)).Returns(word);
+            var result = _fileManager.GetSortedResultsOfSearchingForAWord(_filesProcessed, word);
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Count == 2);
+            Assert.IsTrue(result[0].FileName == "fileName.txt" && result[0].NumberOfTimesFound == 1);
+            Assert.IsTrue(result[1].FileName == "fileName2.txt" && result[1].NumberOfTimesFound == 0);
+        }
+
+        [TestMethod]
+        public void Given_GetSortedResultsOfSearchingForAWord_getsFilesWithWordInBothFiles_returnsSortedList()
+        {
+            var word = "word";
+            A.CallTo(() => _fakeConfigurationProvider.GetIntValueFromAppSettings("numberOfResultsToShow")).Returns(10);
+            A.CallTo(() => _fakeFileProcessor.GetLowerCaseWord(word)).Returns(word);
+            var result = _fileManager.GetSortedResultsOfSearchingForAWord(_filesProcessed, word);
+            Assert.IsNotNull(result);
+            Assert.IsTrue(result.Count == 2);
+            Assert.IsTrue(result[0].FileName == "fileName2.txt" && result[0].NumberOfTimesFound == 2);
+            Assert.IsTrue(result[1].FileName == "fileName.txt" && result[1].NumberOfTimesFound == 1);
+        }
+
+        #endregion
     }
 }
