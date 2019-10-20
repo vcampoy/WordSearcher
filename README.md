@@ -10,5 +10,14 @@ This application has some values that can be set up on AppSettings.file to chang
 # How to run the application
 Write the following command on the prompt: "WordSearcher.exe PATH_OF_THE_FOLDER_TO_SEARCH", where PATH_OF_THE_FOLDER_TO_SEARCH is the path of the folder to search.
 
+# Architecture
+This application has been done following a DDD architecture following SOLID and Clean Code principles.
+
+I decided to use:
+- Unity as Inversion of Control Container
+- Log4Net is a log management tool. The logs will be shown inside the console and in a text file on C:\Logs. This configuration can be changed on the log4net.config file inside the Config folder.
+- MsTest as Unit Testing Manager.
+- FakeItEasy is a Nuget that helps to make fake objects and mocks.
+
 # Last considerations
 This solution has been done with a Visual Studio Community 2019, so it doesn't have a code coverage file that checks the code coverage.
