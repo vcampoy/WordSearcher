@@ -59,5 +59,34 @@ namespace WordSearcher.Application.Tests
 
         #endregion
 
+        #region CleanTextFromPunctuationMarks
+
+        [TestMethod]
+        public void Given_CleanTextFromPunctuationMarks_getsNullText_returnsNullText()
+        {
+            Assert.IsNull(_fileProcessor.CleanTextFromPunctuationMarks(null));
+        }
+
+        [TestMethod]
+        public void Given_CleanTextFromPunctuationMarks_getsEmptyText_returnsEmptyText()
+        {
+            Assert.IsTrue(_fileProcessor.CleanTextFromPunctuationMarks(string.Empty) == string.Empty);
+        }
+
+        [TestMethod]
+        public void Given_CleanTextFromPunctuationMarks_getsOnlyPunctuationMarksText_returnsOnlySpacesText()
+        {
+            A.CallTo(() => _fakeConfigurationProvider.GetValueFromAppSettings("punctuationMarks")).Returns(",.;");
+            Assert.IsTrue(_fileProcessor.CleanTextFromPunctuationMarks(",.;.") == "    ");
+        }
+        
+        [TestMethod]
+        public void Given_CleanTextFromPunctuationMarks_getsRegularText_returnsCleanText()
+        {
+            A.CallTo(() => _fakeConfigurationProvider.GetValueFromAppSettings("punctuationMarks")).Returns(",.;");
+            Assert.IsTrue(_fileProcessor.CleanTextFromPunctuationMarks("This is an example, but it can be whatever. True story;") == "This is an example  but it can be whatever  True story ");
+        }
+
+        #endregion
     }
 }

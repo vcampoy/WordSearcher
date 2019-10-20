@@ -57,6 +57,11 @@ namespace WordSearcher.Application.Implementations
 
         public string CleanTextFromPunctuationMarks(string text)
         {
+            if (string.IsNullOrEmpty(text))
+            {
+                return text;
+            }
+
             var punctuationMarks = GetPunctuationMarks();
 
             foreach (var mark in punctuationMarks)
